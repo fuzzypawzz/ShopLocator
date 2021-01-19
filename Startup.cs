@@ -57,7 +57,7 @@ namespace ShopLocator
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Todos}/{action=Index}/{id?}");
+                    pattern: "{controller=Stores}/{action=Index}/{id?}");
             });
         }
     }

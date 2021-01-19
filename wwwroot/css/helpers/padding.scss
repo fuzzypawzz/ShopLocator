@@ -1,0 +1,17 @@
+﻿.padding {
+    &--xsmall {
+        padding: 5px;
+    }
+
+    &--small {
+        padding: 10px;
+    }
+
+    &--medium {
+        padding: 20px;
+    }
+
+    &--large {
+        padding: 30px;
+    }
+}

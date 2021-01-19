@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ShopLocator.Models;
 
 namespace ShopLocator.Models
 {
@@ -14,5 +15,7 @@ namespace ShopLocator.Models
         }
 
         public DbSet<ShopLocator.Models.Todo> Todo { get; set; }
+
+        public DbSet<ShopLocator.Models.Store> Store { get; set; }
     }
 }
