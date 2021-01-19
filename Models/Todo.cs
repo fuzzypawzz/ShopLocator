@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DotNetCoreSqlDb.Models
+namespace ShopLocator.Models
 {
     public class Todo
     {

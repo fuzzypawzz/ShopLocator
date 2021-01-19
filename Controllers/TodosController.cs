@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DotNetCoreSqlDb.Models;
+using ShopLocator.Models;
 
-namespace DotNetCoreSqlDb.Controllers
+namespace ShopLocator.Controllers
 {
     public class TodosController : Controller
     {

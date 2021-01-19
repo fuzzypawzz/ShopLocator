@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotNetCoreSqlDb.Models
+namespace ShopLocator.Models
 {
     public class MyDatabaseContext : DbContext
     {
@@ -13,6 +13,6 @@ namespace DotNetCoreSqlDb.Models
         {
         }
 
-        public DbSet<DotNetCoreSqlDb.Models.Todo> Todo { get; set; }
+        public DbSet<ShopLocator.Models.Todo> Todo { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DotNetCoreSqlDb.Migrations
+namespace ShopLocator.Migrations
 {
     public partial class InitialCreate : Migration
     {
