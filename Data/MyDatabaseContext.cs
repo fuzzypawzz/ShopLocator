@@ -17,5 +17,7 @@ namespace ShopLocator.Models
         public DbSet<ShopLocator.Models.Todo> Todo { get; set; }
 
         public DbSet<ShopLocator.Models.Store> Store { get; set; }
+
+        public DbSet<ShopLocator.Models.Shop> Shop { get; set; }
     }
 }
