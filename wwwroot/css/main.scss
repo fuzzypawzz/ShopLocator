@@ -9,4 +9,15 @@
 // General styles
 @import "site.css";
 
+.shop-locator-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 450px;
+    height: calc(100vh - 125px);
+    max-height: 1400px;
+    width: 100%;
+    background-color: #fff;
+}
+
 // ~

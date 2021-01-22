@@ -15,3 +15,21 @@
         padding: 30px;
     }
 }
+
+.margin {
+    &--xsmall {
+        margin: 5px;
+    }
+
+    &--small {
+        margin: 10px;
+    }
+
+    &--medium {
+        margin: 20px;
+    }
+
+    &--large {
+        margin: 30px;
+    }
+}

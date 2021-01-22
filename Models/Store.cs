@@ -18,5 +18,9 @@ namespace ShopLocator.Models
         public string City { get; set; }
 
         public int Phonenumber { get; set; }
+
+        public string Lat { get; set; }
+
+        public string Lng { get; set; }
     }
 }

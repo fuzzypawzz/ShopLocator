@@ -23,6 +23,11 @@ namespace ShopLocator.Models
             return View(await _context.Store.ToListAsync());
         }
 
+        public List<Store> GetCoordinates()
+        {
+            return _context.Store.ToList();
+        }
+
         // GET: Stores/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -52,7 +57,7 @@ namespace ShopLocator.Models
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Street,Housenumber,Zipcode,City,Phonenumber")] Store store)
+        public async Task<IActionResult> Create([Bind("ID,Name,Street,Housenumber,Zipcode,City,Phonenumber,Lat,Lng")] Store store)
         {
             if (ModelState.IsValid)
             {
