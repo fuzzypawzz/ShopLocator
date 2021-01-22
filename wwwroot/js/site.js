@@ -1,45 +1,27 @@
-﻿/**
+﻿// TODO: Refractor all as per JavaScript structure standards
+
+/**
+ * Author: Jannik Maag (Github: Fuzzypawzz)
+ * License: MIT
+ */
+
+/**
  * Google Maps API script callback calls this method
  */
 function shopLocator() {
-  let showDenmark = {
+  const showDenmark = {
     lat: 55.942732,
     lng: 10.3415227,
   };
 
-  let showCph = {
+  const showCph = {
     lat: 55.6959315,
     lng: 12.4609883,
   };
 
-  /**
-   * CONTROL BUTTON "TÆT PÅ MIG" IN THE TOP LEFT CORNER OF THE MAP
-   * @param {object} controlDiv The element containing the custom control "tæt på mig"
-   * @param {element} map The map which shall be controlled
-   */
-  function CenterControl(controlDiv, map) {
-    // Set CSS for the control border.
-    var controlUI = document.createElement("div");
-    controlUI.className = "controlUI";
-    controlUI.style.backgroundColor = "#fff";
-    controlUI.style.borderRadius = "20px";
-    controlUI.style.cursor = "pointer";
-    controlDiv.appendChild(controlUI); // Set CSS for the control interior.
-    var controlText = document.createElement("div");
-    controlText.className = "closeToMe";
-    controlText.innerHTML = DEFAULTS.closeToMeText;
-    var locationIcon = new Svg(
-      "nav-location-icon",
-      "closeToMeIcon"
-    ).createSvg();
-    controlUI.appendChild(locationIcon);
-    controlUI.appendChild(controlText); // Add the event listener to button
-    controlUI.addEventListener("click", function() {
-      openClosestStore();
-    });
-  }
+  const markerStorage = [];
 
-  let map = new google.maps.Map(document.getElementById("mapDiv"), {
+  const map = new google.maps.Map(document.getElementById("mapDiv"), {
     center: showCph,
     clickable: true,
     zoom: 11,
@@ -59,7 +41,24 @@ function shopLocator() {
     ],
   });
 
-  let infoWindow = new google.maps.InfoWindow();
+  document
+    .querySelector("#listofstores")
+    .querySelectorAll("li")
+    .forEach((listItem) => {
+      listItem.addEventListener("click", function() {
+          markerStorage.forEach(marker => {
+              if (marker.id == this.id) {
+                clickMarker(marker);
+              }
+          })
+      });
+    });
+
+  const infoWindow = new google.maps.InfoWindow();
+
+  google.maps.event.addListener(infoWindow, "closeclick", function() {
+    map.setZoom(11);
+  });
 
   /**
    *
@@ -69,21 +68,20 @@ function shopLocator() {
     if (typeof latLng !== "object") {
       throw new Error("Marker coordinates must be an object!");
     }
-    let marker = new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: latLng,
       map,
-      id: model.id,
+      id: `marker_${model.id}`,
     });
 
     // TODO: Refractor, make controller return the id format like: "marker_ID"
     // When done, just call querySelector with this.id and remove the prefix from the view: stores/index.cshtml
     marker.addListener("click", function() {
-      let listItemRadio = document.querySelector(`#section-toggle_${this.id}`);
-      console.log(listItemRadio);
+      let listItemRadio = document.querySelector(`#${this.id}`)
+      .querySelector("input");
       listItemRadio.checked = true;
 
       let infoWindowContent = getClone(`popup_${model.id}`);
-      console.log(infoWindowContent);
       infoWindow.setContent(infoWindowContent);
       infoWindow.setPosition(latLng);
       infoWindow.setOptions({
@@ -94,8 +92,14 @@ function shopLocator() {
       infoWindow.open(map);
       map.setCenter(latLng);
     });
+
+    markerStorage.push(marker);
   }
-  
+
+  function clickMarker(marker) {
+    google.maps.event.trigger(marker, "click");
+  }
+
   /**
    * TODO: Refractor when setting up Vue templates
    * @param {string} id - Element ID to clone a new element from

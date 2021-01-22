@@ -36,9 +36,8 @@
             <ul id="listofstores">
                 @foreach (var item in Model)
                 {
-                    <li>
-                        <section class="shop-locator-list-item padding--small"
-                                 id="marker_@Html.DisplayFor(storeInModel => item.ID)">
+                    <li id="marker_@Html.DisplayFor(storeInModel => item.ID)">
+                        <section class="shop-locator-list-item padding--small">
                             <input type="radio" name="toggle" id="section-toggle_@Html.DisplayFor(storeInModel => item.ID)" />
                             <label for="section-toggle_@Html.DisplayFor(storeInModel => item.ID)">
                                 <h5 class="headline">@Html.DisplayFor(storeInModel => item.Name)</h5>
@@ -73,3 +72,4 @@
     </div>
 </div>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv8IP6VQfr6EEY8GGWBVnZ6NnucWSmzwA&callback=shopLocator&libraries=geometry" defer></script>
