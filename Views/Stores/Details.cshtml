@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ShopLocator.Models.Store>
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Administrate map items</h1>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <span>@Html.DisplayFor(itemInModel => item.Name)</span>
+            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+        </li>
+    }
+</ul>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

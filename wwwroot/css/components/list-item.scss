@@ -1,0 +1,25 @@
+﻿.shop-locator {
+    &-list {
+        &-item {
+
+            &:hover {
+                cursor: pointer;
+                background: #f6f6f6;
+            }
+
+            &__address-info {
+                display: flex;
+                flex-direction: column;
+            }
+
+            &__more-content {
+                visibility: hidden;
+                height: 0;
+            }
+        }
+
+        &-bar {
+            border-bottom: 1px solid #f1f1f1;
+        }
+    }
+}

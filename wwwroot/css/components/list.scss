@@ -1,0 +1,38 @@
+﻿.shop-locator {
+    &-list {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-color: #f1f1f1;
+        border-top: solid #f1f1f1;
+        border-width: .5px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+        & ul, ol {
+            list-style-type: none;
+            padding: unset;
+        }
+
+        & input {
+            display: none;
+            // Reveal the more-content section when radio button is checked
+            // References a class inside "list-item.scss"
+            &:checked {
+
+                & ~ .shop-locator-list-item__more-content {
+                    height: auto;
+                    overflow: auto;
+                    visibility: visible;
+                }
+            }
+        }
+
+        & label {
+            width: 100%;
+            cursor: pointer;
+        }
+    }
+}
+
+// {}

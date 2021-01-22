@@ -1,6 +1,6 @@
 using System;
 
-namespace DotNetCoreSqlDb.Models
+namespace ShopLocator.Models
 {
     public class ErrorViewModel
     {
