@@ -23,27 +23,9 @@ namespace ShopLocator.Models
             return View(await _context.Store.ToListAsync());
         }
 
-        public List<Store> GetCoordinates()
+        public async Task<IActionResult> Details()
         {
-            return _context.Store.ToList();
-        }
-
-        // GET: Stores/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var store = await _context.Store
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (store == null)
-            {
-                return NotFound();
-            }
-
-            return View(store);
+            return View(await _context.Store.ToListAsync());
         }
 
         // GET: Stores/Create
@@ -52,9 +34,13 @@ namespace ShopLocator.Models
             return View();
         }
 
+        // Rename method
+        public List<Store> GetCoordinates()
+        {
+            return _context.Store.ToList();
+        }
+
         // POST: Stores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Name,Street,Housenumber,Zipcode,City,Phonenumber,Lat,Lng")] Store store)
@@ -85,11 +71,9 @@ namespace ShopLocator.Models
         }
 
         // POST: Stores/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Street,Housenumber,Zipcode,City,Phonenumber")] Store store)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Street,Housenumber,Zipcode,City,Phonenumber,Lat,Lng")] Store store)
         {
             if (id != store.ID)
             {
@@ -109,31 +93,9 @@ namespace ShopLocator.Models
                     {
                         return NotFound();
                     }
-                    else
-                    {
-                        throw;
-                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(store);
-        }
-
-        // GET: Stores/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var store = await _context.Store
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (store == null)
-            {
-                return NotFound();
-            }
-
             return View(store);
         }
 
