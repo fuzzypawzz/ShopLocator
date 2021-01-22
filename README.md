@@ -1,4 +1,5 @@
 # Shop-locator
+### An ASP.NET Core MVC Application
 Languages:
 - C#
 - JavaScript
