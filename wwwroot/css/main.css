@@ -11,6 +11,15 @@
   .shop-locator-list ul, .shop-locator-list ol {
     list-style-type: none;
     padding: unset; }
+  .shop-locator-list input {
+    display: none; }
+    .shop-locator-list input:checked ~ .shop-locator-list-item__more-content {
+      height: auto;
+      overflow: auto;
+      visibility: visible; }
+  .shop-locator-list label {
+    width: 100%;
+    cursor: pointer; }
 
 .shop-locator-list-item:hover {
   cursor: pointer;
@@ -19,6 +28,10 @@
 .shop-locator-list-item__address-info {
   display: flex;
   flex-direction: column; }
+
+.shop-locator-list-item__more-content {
+  visibility: hidden;
+  height: 0; }
 
 .shop-locator-list-bar {
   border-bottom: 1px solid #f1f1f1; }

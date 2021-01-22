@@ -78,8 +78,9 @@ function shopLocator() {
     // TODO: Refractor, make controller return the id format like: "marker_ID"
     // When done, just call querySelector with this.id and remove the prefix from the view: stores/index.cshtml
     marker.addListener("click", function() {
-      let listItemTarget = document.querySelector(`#marker_${this.id}`);
-      console.log(listItemTarget);
+      let listItemRadio = document.querySelector(`#section-toggle_${this.id}`);
+      console.log(listItemRadio);
+      listItemRadio.checked = true;
 
       let infoWindowContent = getClone(`popup_${model.id}`);
       console.log(infoWindowContent);
@@ -89,9 +90,9 @@ function shopLocator() {
         // Display infowindow correctly relatively to the marker position
         pixelOffset: new google.maps.Size(0, -30),
       });
-
+      map.setZoom(15);
       infoWindow.open(map);
-      map.setCenter(model.latLng);
+      map.setCenter(latLng);
     });
   }
   

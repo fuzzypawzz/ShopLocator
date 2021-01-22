@@ -13,6 +13,23 @@
             list-style-type: none;
             padding: unset;
         }
+
+        & input {
+            display: none;
+
+            // Reveal the more-content section when radio button is checked
+            // References a class inside "list-item.scss"
+            &:checked ~ .shop-locator-list-item__more-content {
+                height: auto;
+                overflow: auto;
+                visibility: visible;
+            }
+        }
+
+        & label {
+            width: 100%;
+            cursor: pointer;
+        }
     }
 }
 
