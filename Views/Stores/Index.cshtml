@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<ShopLocator.Models.Store>
 
 @{
-    ViewData["Title"] = "Shop locator";
+    ViewData["Title"] = "Shop locator prototype";
 }
 
-@foreach (var item in Model)
-{
-    <div style="display: none">
+<!-- Hidden templates to use for the info windows on the map -->
+<div class="infowindow-templates" style="display: none">
+    @foreach (var item in Model)
+    {
         <div class="popup-content" id="popup_@Html.DisplayFor(storeInModel => item.ID)">
             <!--<img src="http://placehold.it/100x100" class="popup-image" />-->
             <h6 class="popup-storename">@Html.DisplayFor(storeInModel => item.Name)</h6>
@@ -21,15 +22,15 @@
                 </span>
             </p>
         </div>
-    </div>
-}
+    }
+</div>
 
 <div class="shop-locator-wrapper">
     <div class="shop-locator-container--left" id="search-header">
         <section class="shop-locator-search padding--small">
             <h1 class="search-headline">Find nearest shop</h1>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Søg.." aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Søg.." disabled aria-label="Username" aria-describedby="basic-addon1" style="cursor: not-allowed">
             </div>
         </section>
         <section class="shop-locator-list">
