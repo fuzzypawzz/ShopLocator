@@ -65,19 +65,11 @@
             element: "li"
         },
         noResults: (dataFeedback, generateList) => {
-            // Generate autoComplete List
-            //generateList(autoComplete, dataFeedback, dataFeedback.results);
-            //// No Results List Item
-            //const result = document.createElement("li");
-            //result.setAttribute("class", "no_result");
-            //result.setAttribute("tabindex", "1");
-            //result.innerHTML = `<span style="display: flex; align-items: center; font-weight: 100; color: rgba(0,0,0,.2);">Found No Results for "${dataFeedback.query}"</span>`;
-            //document.querySelector(`#${autoCompleteJS.resultsList.idName}`).appendChild(result);
+            
         },
         onSelection: feedback => {             // Action script onSelection event | (Optional)
             document.querySelector
                 (`#section-toggle_${feedback.selection.value.id}`).click();
         }
     });
-
 });
