@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using ShopLocator.Constants
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -13,23 +15,26 @@
     </environment>
     <link rel="stylesheet" href="~/css/main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@tarekraafat/autocomplete.js@8.2.2/dist/css/autoComplete.min.css">*@
 </head>
 <body>
     <header>
         <nav class="indigo darken-1">
             <div class="nav-wrapper container">
                 <a class="brand-logo left" asp-area="" asp-controller="Stores" asp-action="Index">
-                    Shop Locator
+                    @Content.APP_NAME
                 </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    @*<li><a class="navbar-item" asp-area="" asp-controller="Stores" asp-action="Create">Create shop</a></li>
-                        <li><a class="navbar-item" asp-area="" asp-controller="Stores" asp-action="Details">Administration</a></li>*@
-                    <li><a class="navbar-item" asp-area="" asp-controller="Home" asp-action="Index">About</a></li>
+                    @*<li><a class="navbar-item" asp-area="" asp-controller="Stores" asp-action="Create">@Content.Navigation.CREATE_NEW_SHOP_LINK</a></li>
+                        <li><a class="navbar-item" asp-area="" asp-controller="Stores" asp-action="Details">@Content.Navigation.ADMIN_LINK</a></li>*@
+                    <li>
+                        <a class="navbar-item" asp-area="" asp-controller="Home" asp-action="Index">
+                            @Content.Navigation.ABOUT_LINK
+                        </a>
+                    </li>
                     <li>
                         <a class="navbar-item"
                            href="https://github.com/fuzzypawzz/ShopLocator"
-                           target="_blank">Go to GitHub repository</a>
+                           target="_blank">@Content.Navigation.GO_TO_REPO_LINK</a>
                     </li>
                 </ul>
                 <a href="#" data-target="nav-mobile" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -49,11 +54,11 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">About</h5>
+                    <h5 class="white-text">@Content.Footer.LEFT_HEADLINE</h5>
                     <p class="grey-text text-lighten-4">The shop locator is created by Jannik Maag for a school project at CPH Business in Copenhagen in 2021. License: MIT</p>
                 </div>
                 <div class="col l3 s12">
-                    <h5 class="white-text">Made using</h5>
+                    <h5 class="white-text">@Content.Footer.MIDDLE_HEADLINE</h5>
                     <ul>
                         <li>ASP.NET Core</li>
                         <li>C#</li>
@@ -65,7 +70,7 @@
                     </ul>
                 </div>
                 <div class="col l3 s12">
-                    <h5 class="white-text">Feedback</h5>
+                    <h5 class="white-text">@Content.Footer.RIGHT_HEADLINE</h5>
                     <ul>
                         <li><a class="white-text" target="_blank" href="https://github.com/fuzzypawzz/shopLocator">Shop Locator on GitHub</a></li>
                         <li><a class="white-text" target="_blank" href="https://dk.linkedin.com/in/jannik-maag">Jannik Maag on LinkedIn</a></li>
@@ -75,7 +80,7 @@
         </div>
         <div class="footer-copyright">
             <div class="container">
-                Kudos to the awesome CSS framework: <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                @Content.Footer.COPYRIGHT_TEXT: <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
             </div>
         </div>
     </footer>
@@ -85,18 +90,6 @@
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-            </script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                    crossorigin="anonymous"
-                    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-            </script>*@
     </environment>
     <script src="https://cdn.jsdelivr.net/npm/@@tarekraafat/autocomplete.js@8.2.2/dist/js/autoComplete.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
