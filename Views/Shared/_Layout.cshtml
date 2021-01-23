@@ -4,75 +4,103 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
- 
+
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     </environment>
     <link rel="stylesheet" href="~/css/main.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@tarekraafat/autocomplete.js@8.2.2/dist/css/autoComplete.min.css">*@
 </head>
 <body>
-    <div id="app">
-        <ShopList></ShopList>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Stores" asp-action="Index">Shop Locator Prototype</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Stores" asp-action="Create">Create shop</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Stores" asp-action="Details">Administration</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="https://github.com/fuzzypawzz/ShopLocator" target="_blank">Go to GitHub repository</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+    <header>
+        <nav class="indigo darken-1">
+            <div class="nav-wrapper container">
+                <a class="brand-logo left" asp-area="" asp-controller="Stores" asp-action="Index">
+                    Shop Locator
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    @*<li><a class="navbar-item" asp-area="" asp-controller="Stores" asp-action="Create">Create shop</a></li>
+                        <li><a class="navbar-item" asp-area="" asp-controller="Stores" asp-action="Details">Administration</a></li>*@
+                    <li><a class="navbar-item" asp-area="" asp-controller="Home" asp-action="Index">About</a></li>
+                    <li>
+                        <a class="navbar-item"
+                           href="https://github.com/fuzzypawzz/ShopLocator"
+                           target="_blank">Go to GitHub repository</a>
+                    </li>
+                </ul>
+                <a href="#" data-target="nav-mobile" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="section">
         <div class="container">
-            <main role="main" class="pb-3">
+            <main role="main">
                 @RenderBody()
             </main>
         </div>
-    </div>
+    </section>
+
+    <footer class="page-footer pink darken-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">About</h5>
+                    <p class="grey-text text-lighten-4">The shop locator is created by Jannik Maag for a school project at CPH Business in Copenhagen in 2021. License: MIT</p>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Made using</h5>
+                    <ul>
+                        <li>ASP.NET Core</li>
+                        <li>C#</li>
+                        <li>Razor</li>
+                        <li>JavaScript</li>
+                        <li><a class="white-text" target="_blank" href="https://sass-lang.com/">Sass</a></li>
+                        <li><a class="white-text" target="_blank" href="https://azure.microsoft.com/">Microsoft Azure</a></li>
+                        <li><a class="white-text" target="_blank" href="https://developers.google.com/maps/documentation/javascript/overview">Google Maps JS API</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Feedback</h5>
+                    <ul>
+                        <li><a class="white-text" target="_blank" href="https://github.com/fuzzypawzz/shopLocator">Shop Locator on GitHub</a></li>
+                        <li><a class="white-text" target="_blank" href="https://dk.linkedin.com/in/jannik-maag">Jannik Maag on LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Kudos to the awesome CSS framework: <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
 
     <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </environment>
     <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+            </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+            </script>*@
     </environment>
+    <script src="https://cdn.jsdelivr.net/npm/@@tarekraafat/autocomplete.js@8.2.2/dist/js/autoComplete.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/autocomplete.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
