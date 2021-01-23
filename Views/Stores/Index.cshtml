@@ -78,17 +78,4 @@
     </div>
 </div>
 
-<script type="text/javascript">
-
-    // Will write out "Hi" in the browser console, one time.
-    console.log("Hi");
-
-    @foreach (var item in Model)
-    {
-        <text>
-        console.log( @Html.DisplayFor(storeInModel => item.Housenumber) );
-        </text>
-    }
-</script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv8IP6VQfr6EEY8GGWBVnZ6NnucWSmzwA&callback=shopLocator&libraries=geometry" defer></script>

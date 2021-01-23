@@ -1,18 +1,11 @@
-﻿// TODO: Refractor all as per JavaScript structure standards
+﻿// TODO: Setup webpack and introduce Vue
 
 /**
  * Author: Jannik Maag (Github: Fuzzypawzz)
  * License: MIT
  */
 
-/**
- * Google Maps API script callback calls this method
- */
 function shopLocator() {
-  const showDenmark = {
-    lat: 55.942732,
-    lng: 10.3415227,
-  };
 
   const showCph = {
     lat: 55.6959315,
@@ -41,24 +34,7 @@ function shopLocator() {
     ],
   });
 
-  document
-    .querySelector("#listofstores")
-    .querySelectorAll("li")
-    .forEach((listItem) => {
-      listItem.addEventListener("click", function() {
-          markerStorage.forEach(marker => {
-              if (marker.id == this.id) {
-                clickMarker(marker);
-              }
-          })
-      });
-    });
-
   const infoWindow = new google.maps.InfoWindow();
-
-  google.maps.event.addListener(infoWindow, "closeclick", function() {
-    map.setZoom(11);
-  });
 
   /**
    *
@@ -117,7 +93,25 @@ function shopLocator() {
       lat: parseFloat(lat),
       lng: parseFloat(lng),
     };
-  }
+   }
+
+    // TODO: Get element id from constant
+    document
+        .querySelector("#listofstores")
+        .querySelectorAll("li")
+        .forEach((listItem) => {
+            listItem.addEventListener("click", function () {
+                markerStorage.forEach(marker => {
+                    if (marker.id == this.id) {
+                        clickMarker(marker);
+                    }
+                })
+            });
+        });
+
+    google.maps.event.addListener(infoWindow, "closeclick", function () {
+        map.setZoom(11);
+    });
 
   let xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
