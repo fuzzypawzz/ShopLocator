@@ -1,69 +1,74 @@
-﻿@model IEnumerable<ShopLocator.Models.Store>
+﻿@using ShopLocator.Constants
+@model IEnumerable<ShopLocator.Models.Store>
 
 @{
     ViewData["Title"] = "Shop locator prototype";
 }
 
-<!-- Hidden templates to use for the info windows on the map -->
-<div class="infowindow-templates" style="display: none">
+<!-- Hidden info-window templates -->
+<div style="display: none" class="infowindow-templates">
     @foreach (var item in Model)
     {
-        <div class="popup-content" id="popup_@Html.DisplayFor(storeInModel => item.ID)">
-            <!--<img src="http://placehold.it/100x100" class="popup-image" />-->
-            <h6 class="popup-storename">@Html.DisplayFor(storeInModel => item.Name)</h6>
-            <p class="shop-locator-list-item__address-info" style="margin-top: 5px;">
-                <span>
-                    @Html.DisplayFor(storeInModel => item.Street)
-                    @Html.DisplayFor(storeInModel => item.Housenumber)
-                </span>
-                <span>
-                    @Html.DisplayFor(storeInModel => item.Zipcode)
-                    @Html.DisplayFor(storeInModel => item.City)
-                </span>
-            </p>
-        </div>
+    <div class="popup-content" id="popup_@Html.DisplayFor(storeInModel => item.ID)">
+        <!--<img src="http://placehold.it/100x100" class="popup-image" />-->
+        <h6 class="popup-storename">@Html.DisplayFor(storeInModel => item.Name)</h6>
+        <p class="shop-locator-list-item__address-info" style="margin-top: 5px;">
+            <span>
+                @Html.DisplayFor(storeInModel => item.Street)
+                @Html.DisplayFor(storeInModel => item.Housenumber)
+            </span>
+            <span>
+                @Html.DisplayFor(storeInModel => item.Zipcode)
+                @Html.DisplayFor(storeInModel => item.City)
+            </span>
+        </p>
+    </div>
     }
 </div>
 
 <div class="shop-locator-wrapper">
     <div class="shop-locator-container--left" id="search-header">
+
         <section class="shop-locator-search padding--small">
-            <h1 class="search-headline">Find nearest shop</h1>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Søg.." disabled aria-label="Username" aria-describedby="basic-addon1" style="cursor: not-allowed">
+            <h4 class="search-headline">@Content.SEARCH_HEADLINE</h4>
+
+            <!-- Search field -->
+            <div class="input-field col s6">
+                <input id="autoComplete" placeholder="Søg.." type="text" class="validate">
             </div>
         </section>
+
         <section class="shop-locator-list">
             <ul id="listofstores">
                 @foreach (var item in Model)
                 {
-                    <li id="marker_@Html.DisplayFor(storeInModel => item.ID)">
-                        <section class="shop-locator-list-item padding--small">
-                            <input type="radio" name="toggle" id="section-toggle_@Html.DisplayFor(storeInModel => item.ID)" />
-                            <label for="section-toggle_@Html.DisplayFor(storeInModel => item.ID)">
-                                <h5 class="headline">@Html.DisplayFor(storeInModel => item.Name)</h5>
-                                <p class="shop-locator-list-item__address-info">
-                                    <span>
-                                        @Html.DisplayFor(storeInModel => item.Street)
-                                        @Html.DisplayFor(storeInModel => item.Housenumber)
-                                    </span>
-                                    <span>
-                                        @Html.DisplayFor(storeInModel => item.Zipcode)
-                                        @Html.DisplayFor(storeInModel => item.City)
-                                    </span>
-                                </p>
-                            </label>
-                            <section class="shop-locator-list-item__more-content">
-                                <p class="shop-locator-list-item__address-info">
-                                    This section can hold more data like the phonenumber, opening hours, etc.
-                                    <span>
-                                        Telefon: @Html.DisplayFor(storeInModel => item.Phonenumber)
-                                    </span>
-                                </p>
-                            </section>
+                <li id="marker_@Html.DisplayFor(storeInModel => item.ID)">
+                    <section class="shop-locator-list-item padding--small">
+                        <input type="radio" name="toggle" id="section-toggle_@Html.DisplayFor(storeInModel => item.ID)" />
+                        <label for="section-toggle_@Html.DisplayFor(storeInModel => item.ID)">
+                            <h6 class="headline">@Html.DisplayFor(storeInModel => item.Name)</h6>
+                            <p class="shop-locator-list-item__address-info">
+                                <span>
+                                    @Html.DisplayFor(storeInModel => item.Street)
+                                    @Html.DisplayFor(storeInModel => item.Housenumber)
+                                </span>
+                                <span>
+                                    @Html.DisplayFor(storeInModel => item.Zipcode)
+                                    @Html.DisplayFor(storeInModel => item.City)
+                                </span>
+                            </p>
+                        </label>
+                        <section class="shop-locator-list-item__more-content">
+                            <p class="shop-locator-list-item__address-info">
+                                This section can hold more data like the phonenumber, opening hours, etc.
+                                <span>
+                                    Telefon: @Html.DisplayFor(storeInModel => item.Phonenumber)
+                                </span>
+                            </p>
                         </section>
-                        <div class="shop-locator-list-bar"></div>
-                    </li>
+                    </section>
+                    <div class="shop-locator-list-bar"></div>
+                </li>
                 }
             </ul>
         </section>

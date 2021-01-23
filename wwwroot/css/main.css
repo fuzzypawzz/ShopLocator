@@ -82,6 +82,28 @@
 .margin--large {
   margin: 30px; }
 
+.result_name {
+  display: block; }
+
+.autoComplete_list {
+  position: absolute;
+  background: white;
+  z-index: 1;
+  width: 100%;
+  border: 1px solid white;
+  margin: unset;
+  border-radius: 4px;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.17); }
+  .autoComplete_list:focus {
+    outline: none; }
+
+.autoComplete_result {
+  background: white;
+  padding: 5px; }
+  .autoComplete_result:hover {
+    cursor: pointer;
+    color: darkgrey; }
+
 .shop-locator-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
