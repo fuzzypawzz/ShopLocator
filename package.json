@@ -1,12 +1,8 @@
 {
   "name": "shoplocator",
   "version": "1.0.0",
-  "description": "---\r languages:\r - csharp\r - aspx-csharp\r page_type: sample\r description: \"This is a sample application you can use to follow along w/ the Build a .NET Core and SQL Database web app in Azure Web Apps for Containers tutorial.\"\r products:\r - azure\r - aspnet-core\r - azure-app-service\r ---",
+  "description": "Shop Locator MVC web application",
   "private": true,
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fuzzypawzz/ShopLocator.git"
@@ -18,13 +14,6 @@
   },
   "homepage": "https://github.com/fuzzypawzz/ShopLocator#readme",
   "dependencies": {
-    "cross-env": "^7.0.3",
-    "vue": "^2.6.12"
-  },
-  "devDependencies": {
-    "vue-loader": "^15.9.6",
-    "vue-template-compiler": "^2.6.12",
-    "webpack": "^5.16.0",
-    "webpack-cli": "^4.4.0"
+    "cross-env": "^7.0.3"
   }
 }
