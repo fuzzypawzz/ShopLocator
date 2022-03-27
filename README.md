@@ -15,6 +15,9 @@ Tools and frameworks:
 - Visual Studio package - web compiler
 - ADO.NET Entity Framework
 
+### SQL Server required
+A SQL server instance is required and therefore this application can only run on Windows.
+
 ## License
 See [LICENSE](LICENSE.md).
 
